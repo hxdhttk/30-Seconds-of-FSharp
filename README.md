@@ -1,16 +1,10 @@
-# 30 seconds of java8
+# 30 seconds of F#
 
-[![License](https://img.shields.io/badge/license-CC0--1.0-blue.svg)](https://github.com/biezhi/30-seconds-of-java8/blob/master/LICENSE) 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) 
-[![Travis Build](https://travis-ci.org/biezhi/30-seconds-of-java8.svg?branch=master)](https://travis-ci.org/biezhi/30-seconds-of-java8)
-[![@biezhi on zhihu](https://img.shields.io/badge/zhihu-%40biezhi-red.svg)](https://www.zhihu.com/people/biezhi)
-[![](https://img.shields.io/github/followers/biezhi.svg?style=social&label=Follow%20Me)](https://github.com/biezhi)
-
-> 你可以在30秒或更短时间内收集有用的Java8代码片段。
+> 你可以在30秒或更短时间内收集有用的F#代码片段。
 
 - 使用 <kbd>Ctrl</kbd> + <kbd>F</kbd> 或者 <kbd>command</kbd> + <kbd>F</kbd> 来查找代码片段。
-- 代码片段基于 Java8，如果你还不熟悉可以在[这里](https://zhuanlan.zhihu.com/java8)学习。
-- 代码片段翻译自 [little-java-functions](https://github.com/shekhargulati/little-java-functions)
+- 代码片段基于 F#，如果你还不熟悉可以在[这里](https://docs.microsoft.com/zh-cn/dotnet/fsharp/tour)学习。
+- 代码片段转译自 [little-java-functions](https://github.com/shekhargulati/little-java-functions)
 
 ## 目录
 
@@ -161,26 +155,16 @@
 
 将数组分割成特定大小的小数组。
 
-```java
-public static int[][] chunk(int[] numbers, int size) {
-    return IntStream.iterate(0, i -> i + size)
-            .limit((long) Math.ceil((double) numbers.length / size))
-            .mapToObj(cur -> Arrays.copyOfRange(numbers, cur, cur + size > numbers.length ? numbers.length : cur + size))
-            .toArray(int[][]::new);
-}
+```fsharp
+let chunk numbers size = numbers |> Array.chunkBySize size
 ```
 
 <br>[⬆ 回到顶部](#目录)
 
 ### concat
 
-```java
-public static <T> T[] concat(T[] first, T[] second) {
-    return Stream.concat(
-            Stream.of(first),
-            Stream.of(second)
-    ).toArray(i -> (T[]) Arrays.copyOf(new Object[0], i, first.getClass()));
-}
+```fsharp
+let concat first second = Array.concat [first; second]
 ```
 
 <br>[⬆ 回到顶部](#目录)
